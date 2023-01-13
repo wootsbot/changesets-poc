@@ -1,0 +1,56 @@
+name: Release Last Play app ios
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PNPM_VERSION: 7.24.3
+
+jobs:
+  stats:
+    name: Release app ios
+    runs-on: macos-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Setup pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@${PNPM_VERSION} --activate
+
+      - name: 📦 Install dependencies
+        run: |
+          pnpm install --no-frozen-lockfile
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Release Pull Request
+        id: changesets
+        uses: changesets/action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Release false
+        if: steps.changesets.outputs.hasChangesets == 'false'
+        # You can do something when a publish should happen.
+        run: |
+          echo "🎉 Ver el valor de salida del event steps.changesets.outputs.hasChangesets."
+
+      - name: Release true
+        if: steps.changesets.outputs.hasChangesets == 'true'
+        # You can do something when a publish should happen.
+        run: |
+          echo "🎉 Ver el valor de salida del event steps.changesets.outputs.hasChangesets."
