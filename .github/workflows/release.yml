@@ -40,6 +40,9 @@ jobs:
       - name: Create Release Pull Request
         id: changesets
         uses: changesets/action@v1
+        with:
+          commit: "ci(release): version app"
+          title: "ci(release): version app"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

@@ -7,9 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "changeset": "changeset",
-    "version": "changeset version",
-    "release": "changeset publish"
+    "changeset": "changeset"
   },
   "dependencies": {
     "@next/font": "13.1.2",
