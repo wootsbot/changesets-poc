@@ -1,6 +1,7 @@
 {
   "name": "changesets-poc",
   "version": "0.1.0",
+  "repository": "git@github.com:wootsbot/changesets-poc.git",
   "private": true,
   "scripts": {
     "dev": "next dev",
