@@ -1,6 +1,9 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
-  "changelog": ["@changesets/changelog-github", { "repo": "changesets-poc" }],
+  "changelog": [
+    "@changesets/changelog-github",
+    { "repo": "wootsbot/changesets-poc" }
+  ],
   "commit": false,
   "fixed": [],
   "linked": [],
