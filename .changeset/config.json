@@ -4,7 +4,13 @@
     "@changesets/changelog-github",
     { "repo": "wootsbot/changesets-poc" }
   ],
+  "commit": false,
+  "fixed": [],
+  "linked": [],
+  "access": "restricted",
   "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": [],
   "privatePackages": {
     "version": true,
     "tag": true

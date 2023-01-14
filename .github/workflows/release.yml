@@ -23,6 +23,8 @@ jobs:
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           node-version: 16.x
 
@@ -34,8 +36,6 @@ jobs:
       - name: 📦 Install dependencies
         run: |
           pnpm install --no-frozen-lockfile
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Release Pull Request
         id: changesets
